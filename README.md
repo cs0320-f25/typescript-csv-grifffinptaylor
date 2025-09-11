@@ -1,5 +1,11 @@
 # Sprint 1: TypeScript CSV
 
+## TASK B
+
+- ### Step 1: List 4 Issues
+    - From testing, I found the CSV Parser was unable to parse quotes and strings containing commas. For functionailty purposes, 
+    recognizing a title column could help sort confusion. From the caller's perspective, 
+
 ### Task C: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
