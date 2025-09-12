@@ -6,6 +6,42 @@
     - From testing, I found the CSV Parser was unable to parse quotes and strings containing commas. For functionailty purposes, 
     recognizing a title column could help sort confusion. From the caller's perspective, I think the ability to use different dilimiters would be beneficial to making the CSV Parser expandable. To summarize the four issues: Parsing double quotes, parsing strings containing commas, ability to recognize title vs data, and ability to have dilimiter variations. 
 
+- ### Step 2: List 4 Issues per LLM
+    - 4 Issues from LLM: Multiline fields, Null/NA handling, Quoting rules, delimiter and dialects
+
+- ### Step 3: Propose Enhancements
+    Multiline Fields in Cell
+        - Category: Functionality
+        - From LLM
+        - User Story: As a user, I can parse CSV files where certain fields may span multiple lines, and the data retrieved reflects this. 
+        - Acceptance Criteria:
+            - CSV parser may look for \n to indicate a line break
+            - Columns may remain unaffected with the line breaks
+
+    Parsing Double Quotes
+        - Category: Functionality
+        - From LLM and myself
+        - User Story: As a user, I can parse through fields that include double quoted strings and/or numbers so potentially dialogue or naming purposes.  
+        - Acceptance Criteria:
+            - CSV parser should return a double quoted field as typed in the CSV file
+            - Create errors in case of inccorect quotation marks
+
+    Different Delimiters
+        - Category: Extensibility
+        - From LLM and myself
+        - User Story: As a user, I can choose different delimiter options such as commas, semicolons, specific number of spaces. This allows for extensions to different CSV files.   
+        - Acceptance Criteria:
+            - CSV parser can automatically identify the delimiter
+            - Delimiter used does not cause errors with subjects of rows
+
+    Strings Containing Commas
+        - Category: Functionality
+        - From myself
+        - User Story: As a user, I can parse through fields that contain commas, such as locations or full names.
+        - Acceptance Criteria:
+            - Quote specific instances of this in the CSV file
+            - Rows that contain unquoted delimiters can throw errors
+
 ### Task C: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
