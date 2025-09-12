@@ -42,6 +42,8 @@
             - Quote specific instances of this in the CSV file
             - Rows that contain unquoted delimiters can throw errors
 
+    Notes about LLM (see steps 1 and 2 for other notes): When prompting the LLM, I changed the prompt to ask for tips for extensibility and for functionality. For extensibility, the answer focused around different plugins and adapters that allow for the parser to be used for more than a CSV. Meanwhile for functionality, most of the suggested changes were from the original prompt, such as delimiters, multiline fields, and double quotes. 
+
 ### Task C: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
