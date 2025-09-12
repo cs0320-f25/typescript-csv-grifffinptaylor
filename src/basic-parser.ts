@@ -1,5 +1,17 @@
 import * as fs from "fs";
 import * as readline from "readline";
+import { z } from "zod";
+
+const PersonParserSchema = z.array(
+  z.object({
+    name: z.string(),
+    age: z.number().min(0).max(150),
+  })
+);
+
+export type Person = z.infer<typeof PersonParserSchema>;
+
+
 
 /**
  * This is a JSDoc comment. Similar to JavaDoc, it documents a public-facing

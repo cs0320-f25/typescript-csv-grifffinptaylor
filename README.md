@@ -4,7 +4,7 @@
 
 - ### Step 1: List 4 Issues
     - From testing, I found the CSV Parser was unable to parse quotes and strings containing commas. For functionailty purposes, 
-    recognizing a title column could help sort confusion. From the caller's perspective, 
+    recognizing a title column could help sort confusion. From the caller's perspective, I think the ability to use different dilimiters would be beneficial to making the CSV Parser expandable. To summarize the four issues: Parsing double quotes, parsing strings containing commas, ability to recognize title vs data, and ability to have dilimiter variations. 
 
 ### Task C: Proposing Enhancement
 
