@@ -44,19 +44,8 @@
 
     Notes about LLM (see steps 1 and 2 for other notes): When prompting the LLM, I changed the prompt to ask for tips for extensibility and for functionality. For extensibility, the answer focused around different plugins and adapters that allow for the parser to be used for more than a CSV. Meanwhile for functionality, most of the suggested changes were from the original prompt, such as delimiters, multiline fields, and double quotes. 
 
-### Task C: Proposing Enhancement
-
-- #### Step 1: Brainstorm on your own.
-
-- #### Step 2: Use an LLM to help expand your perspective.
-
-- #### Step 3: use an LLM to help expand your perspective.
-
-    Include a list of the top 4 enhancements or edge cases you think are most valuable to explore in the next week’s sprint. Label them clearly by category (extensibility vs. functionality), and include whether they came from you, the LLM, or both. Describe these using the User Story format—see below for a definition. 
-
-    Include your notes from above: what were your initial ideas, what did the LLM suggest, and how did the results differ by prompt? What resonated with you, and what didn’t? (3-5 sentences.) 
-
 ### Design Choices
+    - My goal was to keep the parser minimal and flexible, The parser reads from a CSV file and turns raw rows into string [][] arrays, and will apply a Zod schema transformation if the row is validated. Validation errors are also thrown if there are issues with validation. Finally, type casting was avoided, leaving type coercion to the schema called by the user. 
 
 ### 1340 Supplement
 

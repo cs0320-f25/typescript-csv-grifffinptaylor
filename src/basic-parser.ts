@@ -26,7 +26,7 @@ export async function parseCSV<T>(path: string, schema?: ZodType<T>): Promise<T[
   });
   
   // Create an empty array to hold the results
-  let result: any[] = []; //Holds all rows of CSV. Typed as any[] for flexibility
+  let result: any[] = []; //Holds all rows of CSV. any[] for flexibility
 
   // We add the "await" here because file I/O is asynchronous. 
   // We need to force TypeScript to _wait_ for a row before moving on. 
@@ -38,10 +38,10 @@ export async function parseCSV<T>(path: string, schema?: ZodType<T>): Promise<T[
 
   //If a schema is provided, validate and transform each row
   if (schema) {
-    result = result.map((row, index) => { //Replace each row with the validarted/transformed version
+    result = result.map((row, index) => { //Replace each row with the validated/transformed version
       const parsed = schema.safeParse(row); //Checks row with schema
       if (!parsed.success) {
-        throw new Error(`CSV Parser Failure on row ${index}: ${parsed.error.message}`); //Throw error if validation fails
+        throw new Error(`CSV Parser Failure on row ${index}: ${parsed.error.message}`); //Throw error if validation fails for specific row
       }
       return parsed.data; //Return the validated/transformed data as T[]
     });
