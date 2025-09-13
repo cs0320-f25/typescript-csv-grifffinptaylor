@@ -1,16 +1,6 @@
 import * as fs from "fs";
 import * as readline from "readline";
-import { z } from "zod";
-
-const PersonParserSchema = z.array(
-  z.object({
-    name: z.string(),
-    age: z.number().min(0).max(150),
-  })
-);
-
-export type Person = z.infer<typeof PersonParserSchema>;
-
+import { ZodType } from "zod";
 
 
 /**
@@ -26,7 +16,7 @@ export type Person = z.infer<typeof PersonParserSchema>;
  * @param path The path to the file being loaded.
  * @returns a "promise" to produce a 2-d array of cell values
  */
-export async function parseCSV(path: string): Promise<string[][]> {
+export async function parseCSV<T>(path: string, schema?: ZodType<T>): Promise<T[] | string[][]> {
   // This initial block of code reads from a file in Node.js. The "rl"
   // value can be iterated over in a "for" loop. 
   const fileStream = fs.createReadStream(path);
@@ -36,8 +26,8 @@ export async function parseCSV(path: string): Promise<string[][]> {
   });
   
   // Create an empty array to hold the results
-  let result = []
-  
+  let result: any[] = []; //Holds all rows of CSV. Typed as any[] for flexibility
+
   // We add the "await" here because file I/O is asynchronous. 
   // We need to force TypeScript to _wait_ for a row before moving on. 
   // More on this in class soon!
@@ -45,5 +35,16 @@ export async function parseCSV(path: string): Promise<string[][]> {
     const values = line.split(",").map((v) => v.trim());
     result.push(values)
   }
-  return result
+
+  //If a schema is provided, validate and transform each row
+  if (schema) {
+    result = result.map((row, index) => { //Replace each row with the validarted/transformed version
+      const parsed = schema.safeParse(row); //Checks row with schema
+      if (!parsed.success) {
+        throw new Error(`CSV Parser Failure on row ${index}: ${parsed.error.message}`); //Throw error if validation fails
+      }
+      return parsed.data; //Return the validated/transformed data as T[]
+    });
+  }
+  return result //Return the final result, either as string[][] or T[]
 }

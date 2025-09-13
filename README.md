@@ -61,16 +61,36 @@
 ### 1340 Supplement
 
 - #### 1. Correctness
+    - Properties to Check & Test:
+        - Preserves row structure of CSV file
+        - Header handling for title rows
+        - Correct delimiter handling
+        - Double Quote pairing for dialogue 
+        - Schema validation (if included)
+        - Successfully handles empty cells/columns
 
 - #### 2. Random, On-Demand Generation
+    - The random on-demand generation could be utilized for testing the specific properties listed above. Creating random tables with quotes, embedded delimiters, and line breaks can help test the basic functionality of the parser. Also, the random data could help test the use of the Zod schema. If the function can produce scheme-valid rows, the developer can also test the schema parameter. And as a function with the ability to mass produce CSV data, the scale of testing can be increased dramatically, making testing more efficient and effective. 
 
 - #### 3. Overall experience, Bugs encountered and resolved
-#### Errors/Bugs:
-#### Tests:
-#### How To…
+    - This sprint was different from some other programming assignments in a couple different ways. First, we were given dysfunctional starter code for the CSV parser, which forced us to brainstorm enhancements. On the same topic, a large emphasis was on the detailed enhancements, but not necessarily the implementation of the ideas. Other than a few silly programming mistakes, my implementation did not encounter any major bugs. By using simplified coding practices, I made sure to stay within the scope of what I knew, largely avoiding any issues.  
 
-#### Team members and contributions (include cs logins):
+#### Errors/Bugs: N/a
+#### Tests: 
+    - parseCSV yields arrays
+    - parseCSV yields only arrays
+    - parseCSV w/ Apostrophes and Decimal
+    - parseCSV w/ Locations and Commas
+    - parseCSV w/ Empty Column
+    - parseCSV w/ Double Quotes
+    - parseCSV w/ schema (validates & transforms rows)
+    - parseCSV throws on failure
+    - parseCSV with product schema
+#### How To…: npm run and npm test (for testing file)
 
-#### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
-#### Total estimated time it took to complete project:
-#### Link to GitHub Repo:  
+#### Team members and contributions (include cs logins): n/a
+
+#### Collaborators (cslogins of anyone you worked with on this project and/or generative AI): 
+    - Used ChatGPT to brainstorm ideas for a schema other than the person row schema we were given in class
+#### Total estimated time it took to complete project: 10 Hours
+#### Link to GitHub Repo: https://github.com/grifffinptaylor 
